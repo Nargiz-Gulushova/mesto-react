@@ -17,7 +17,10 @@ function Main ({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
         setUserDescription(user.about);
         setUserAvatar(user.avatar);
         setCards(cards);
-      })}, [])
+      })
+      .catch ((err) => console.log(err))
+    }, [])
+      
 
   
   
