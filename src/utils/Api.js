@@ -52,19 +52,13 @@ class Api {
       body: JSON.stringify({ avatar }),
     }).then((res) => this._checkResponse(res));
   }
-  // • “залайкать” карточку (PUT)
-  likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes/`, {
-      method: "PUT",
-      headers: this._headers,
-    }).then((res) => this._checkResponse(res));
-  }
-  // • “задизлайкать” карточку (DELTE)
-  dislikeCard(cardId) {
+
+  changeLikeCardStatus(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes/`, {
       headers: this._headers,
-      method: "DELETE",
-    }).then((res) => this._checkResponse(res));
+      method: isLiked ? "DELETE" : "PUT",
+    })
+      .then((res) => this._checkResponse(res));
   }
 
   // • удалить карточку (DELETE)
